@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pneumonia Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .image-preview { margin-top: 20px; }
+        img { max-width: 100%; } /* Ensure the image fits within the container */
+    </style>
+</head>
+<body>
+    <h1>Pneumonia Detection</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <input type="submit" value="Upload and Predict">
+    </form>
+
+    <!-- Display the processed image if available -->
+    {% if img_str %}
+        <div class="image-preview">
+            <h2>Segmented Image:</h2>
+            <img src="data:image/png;base64,{{ img_str }}" alt="Segmented Image">
+        </div>
+    {% endif %}
+</body>
+</html>
