@@ -1,0 +1,16 @@
+.hero-section {
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+.overlay {
+    background-color: rgba(255, 255, 255, 0.4);
+    height: 100%;
+}
+        /* Adjust the padding and styles as needed */
+.navbar {
+    background: purple;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}

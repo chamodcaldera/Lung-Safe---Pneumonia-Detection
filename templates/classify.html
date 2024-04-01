@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+       <style>
+        body {
+            background-image: url("../static/images/background.jpg"); /* Background image path */
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 95%; /* Adjust container width as needed */
+            max-width: 1600px; /* Set maximum width for better responsiveness */
+            margin: auto; /* Center the container */
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border: none;
+            border-radius: 10px;
+            width: 48%; /* Adjust the width of the card */
+            padding: 20px; /* Add padding */
+            margin: 10px; /* Add margin between the cards */
+        }
+        .image-container {
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .custom-file-upload {
+            border: 4px dashed #aaa;
+            padding: 40px;
+            transition: border 0.3s ease;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        .custom-file-upload:hover {
+            border-color: #333;
+        }
+        .custom-file-upload .upload-icon {
+            margin-bottom: 10px;
+        }
+        .upload-info {
+            font-size: 14px;
+            color: #333;
+        }.navbar {
+    background: purple;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}.loader {
+  width: 175px;
+  height: 80px;
+  display: block;
+  margin:auto;
+  background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
+  background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
+  background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
+     display: none;
+}
+.loader::before {
+  content: '';
+  left: 60px;
+  bottom: 18px;
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #FF3D00;
+  background-image: radial-gradient(circle 8px at 18px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 0px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 0px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 36px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 36px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 5px, #FFF 100%, transparent 0);
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: rotationBack 3s linear infinite;
+}
+.loader::after {
+  content: '';
+  left: 94px;
+  bottom: 15px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #FF3D00;
+  background-image: radial-gradient(circle 5px at 12px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 0px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 0px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 24px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 24px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 3px, #FFF 100%, transparent 0);
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: rotationBack 4s linear infinite reverse;
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+    </style>
+</head>
+<body>
+<span class="loader"></span>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">LOGO</a>
+          <img src="../static/images/logo.png" alt="Logo" width="30" height="40" class="d-inline-block align-text-top">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="card p-4">
+        <h1 class="text-center mb-4">Pneumonia Detection</h1>
+        <form action="/classify" method="post" enctype="multipart/form-data" class="mb-3">
+            <div class="custom-file-upload">
+                <div class="upload-icon">
+                    <!-- Icon image source -->
+                    <img src="upload-cloud-icon.png" alt="Upload" style="width: 64px; height: 64px;" />
+                </div>
+                <div class="upload-info">
+                    Drag files to upload or use the button below
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="image" accept="image/*" class="custom-file-input" id="imageInput" required>
+                    <label class="custom-file-label" for="imageInput">Choose file</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Upload and Predict</button>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="text-center">Uploaded Image</h3>
+                <div class="image-container">
+                    {% if img_data %}
+                    <!-- Uploaded image will be displayed here -->
+                    <img src="data:image/png;base64,{{ img_data }}" alt="Uploaded Image">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center">Predicted Image</h3>
+                <div class="image-container" id="predictedImage">
+                    <!-- Predicted image will be displayed here -->
+                    {% if img_str %}
+                        <img src="data:image/png;base64,{{ img_str }}" alt="Predicted Image">
+                        <a href="#" id="downloadButton" class="btn btn-primary mt-3" download="predicted_image.png">Download Predicted Image</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prediction result card -->
+    <div class="card p-4">
+        <h1 class="text-center mt-5">Prediction Result</h1>
+        <h2 class="text-center">Category: {{ category }}</h2>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.10/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Bootstrap file input label update
+    $('.custom-file-input').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+    // Function to trigger download when the button is clicked
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        // Get the data URL of the predicted image
+        var imageDataUrl = document.querySelector('#predictedImage img').src;
+
+        // Create a temporary anchor element
+        var downloadLink = document.createElement('a');
+        downloadLink.href = imageDataUrl;
+        downloadLink.download = 'predicted_image.png';
+
+        // Append the anchor element to the body and trigger the download
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+
+        // Remove the anchor element from the body
+        document.body.removeChild(downloadLink);
+    });
+</script>
+</body>
+</html>
