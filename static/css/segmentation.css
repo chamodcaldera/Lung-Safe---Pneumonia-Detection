@@ -1,0 +1,38 @@
+.container {
+    background: url('../images/illustration-lungs-stethoscope.webp') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    width: 2000vh;
+}
+.image-container {
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.custom-file-upload {
+    border: 4px dashed #aaa;
+    padding: 40px;
+    transition: border 0.3s ease;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+.custom-file-upload:hover {
+    border-color: #333;
+}
+.custom-file-upload .upload-icon {
+    margin-bottom: 10px;
+}
+.upload-info {
+    font-size: 14px;
+    color: #333;
+}
