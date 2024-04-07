@@ -33,6 +33,10 @@ def predict_seg():
         return "No image file in request", 400
 
     file = request.files["image"]
+
+
+    if file.content_type not in ['image/jpeg', 'image/png']:
+        return "Unsupported image format. Please upload JPEG or PNG images only.", 400
     image = Image.open(file.stream)  # Read the image in PIL format
     img_str = seg_predict(image)
     img_str = img_str.decode('utf-8')
@@ -48,6 +52,12 @@ def detect_pneumonia():
         return "No image file in request", 400
 
     file = request.files["image"]
+
+
+    if file.content_type not in ['image/jpeg', 'image/png']:
+        return "Unsupported image format. Please upload JPEG or PNG images only.", 400
+
+
     image = Image.open(file.stream)  # Read the image in PIL format
     img_str = seg_predict(image)
     temp_image_path = save_base64_image_to_temp(img_str)
