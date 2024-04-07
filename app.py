@@ -34,7 +34,6 @@ def predict_seg():
 
     file = request.files["image"]
 
-
     if file.content_type not in ['image/jpeg', 'image/png']:
         return "Unsupported image format. Please upload JPEG or PNG images only.", 400
     image = Image.open(file.stream)  # Read the image in PIL format
