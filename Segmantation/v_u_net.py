@@ -45,7 +45,7 @@ from tensorflow.keras.preprocessing.image import img_to_array, load_img
 
 
 
-#This class provides batches of image-mask pairs for segmentation tasks, which are appropriate for training and testing segmentation models.
+
 
 class SegmentationDataGenerator(Sequence):
     def __init__(self, image_paths, mask_paths, batch_size, target_size=(256, 256)):
@@ -128,7 +128,7 @@ train_image_paths, train_mask_paths = collect_dataset_paths(os.path.join(base_da
 val_image_paths, val_mask_paths = collect_dataset_paths(os.path.join(base_dataset_dir, 'Val'))
 test_image_paths, test_mask_paths = collect_dataset_paths(os.path.join(base_dataset_dir, 'Test'))
 
-# Count files in each set
+
 train_image_count = get_file_count(train_image_paths)
 train_mask_count = get_file_count(train_mask_paths)
 val_image_count = get_file_count(val_image_paths)
@@ -136,7 +136,7 @@ val_mask_count = get_file_count(val_mask_paths)
 test_image_count = get_file_count(test_image_paths)
 test_mask_count = get_file_count(test_mask_paths)
 
-# Print the counts
+
 print("Train images:", train_image_count)
 print("Train masks:", train_mask_count)
 print("Val images:", val_image_count)
@@ -293,7 +293,7 @@ def plot_loss(history):
 
 # Plot Training and Validation Accuracy
 def plot_accuracy(history):
-    # Check if 'accuracy' is in the history keys, otherwise it might be 'acc' depending on the Keras version
+
     acc_key = 'accuracy' if 'accuracy' in history.history else 'acc'
     val_acc_key = 'val_accuracy' if 'val_accuracy' in history.history else 'val_acc'
 
@@ -306,14 +306,14 @@ def plot_accuracy(history):
     plt.legend()
     plt.show()
 
-# Call the plotting functions
+
 plot_loss(history)
 plot_accuracy(history)
 
 from keras.models import load_model
 import tensorflow as tf
 
-# Define your custom metrics outside of the loading function
+
 def IoU(y_true, y_pred, smooth=1e-6):
     y_true = tf.cast(y_true, tf.float32)
     y_pred = tf.cast(y_pred > 0.5, tf.float32)
@@ -406,7 +406,7 @@ def Precision(y_true, y_pred):
     precision = true_positives / (predicted_positives + 1e-6)
     return precision
 
-# Load the model with custom metrics
+
 model_path = '/content/drive/MyDrive/FYP/Implemention/my_model.keras'
 custom_objects = {'IoU': IoU, 'DiceScore': DiceScore, 'Precision': Precision}
 model = load_model(model_path, custom_objects=custom_objects)
@@ -415,7 +415,7 @@ def preprocess_image(image_path, target_size=(256, 256)):
     """Read and preprocess an image for the U-Net model."""
     img = cv2.imread(image_path)
     img = cv2.resize(img, target_size)
-    img = img / 255.0  # Normalize if your model expects this
+    img = img / 255.0
     img = np.expand_dims(img, axis=0)  # Add batch dimension
     return img
 
@@ -425,35 +425,33 @@ def save_segmented_image(image, save_path):
 
 def segment_and_save(image_paths, base_save_dir):
     for image_path in image_paths:
-        # Preprocess the image
+
         preprocessed_img = preprocess_image(image_path)
 
-        # Predict the segmentation mask
         predicted_mask = model.predict(preprocessed_img)[0]
 
-        # Convert mask to an image (optional thresholding)
-        segmented_img = (predicted_mask > 0.5) * 255  # Adjust the threshold as needed
+
+        segmented_img = (predicted_mask > 0.5) * 255
         segmented_img = segmented_img.astype(np.uint8)
 
-        # Construct the save path
+
         relative_path = os.path.relpath(image_path, start=os.path.commonpath(image_paths))
         save_path = os.path.join(base_save_dir, relative_path)
 
-        # Create the directory if it doesn't exist
+
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
-        # Save the segmented image
         save_segmented_image(segmented_img, save_path)
 
 base_save_dir_test = '/content/drive/MyDrive/FYP/Dataset/Classification/Test'
 base_save_dir_val = '/content/drive/MyDrive/FYP/Dataset/Classification/Val'
 base_save_dir_train = '/content/drive/MyDrive/FYP/Dataset/Classification/Train'
 
-# Segment and save training images
+
 segment_and_save(train_image_paths, base_save_dir_train)
 
-# Segment and save validation images
+
 segment_and_save(val_image_paths, base_save_dir_val)
 
-# Segment and save test images
+
 segment_and_save(test_image_paths, base_save_dir_test)
