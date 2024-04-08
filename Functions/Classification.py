@@ -15,10 +15,9 @@ resnet_model_path = os.path.join(my_path, "../Models/Classification/Resnet50_pne
 
 
 def predict_pneumonia(image):
-    # Convert the input image to a list
+
     image = [image]
 
-    # Load the models
     inception_model = load_model(inception_model_path)
     vgg16_model = load_model(vgg16_model_path)
     resnet_model = load_model(resnet_model_path)
