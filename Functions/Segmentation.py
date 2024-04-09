@@ -35,10 +35,10 @@ def Precision(y_true, y_pred):
 
 def preprocess_image(image, target_size):
     if image.mode != 'RGB':
-        image = image.convert('RGB')  # Convert the image to RGB mode
-    img = image.resize(target_size)  # Resize the image to the target size
-    img = img_to_array(img) / 255.0  # Convert to numpy array and normalize
-    img = np.expand_dims(img, axis=0)  # Add a batch dimension
+        image = image.convert('RGB')
+    img = image.resize(target_size)
+    img = img_to_array(img) / 255.0
+    img = np.expand_dims(img, axis=0)
     return img
 
 
@@ -54,7 +54,7 @@ def seg_predict(image):
     threshold = 0.5
     pred_mask = (pred_mask > threshold).astype(np.uint8)
 
-    pred_mask = pred_mask.squeeze() * 255  # Convert to uint8 format
+    pred_mask = pred_mask.squeeze() * 255
     pred_mask_image = Image.fromarray(pred_mask)
 
     buffer = BytesIO()

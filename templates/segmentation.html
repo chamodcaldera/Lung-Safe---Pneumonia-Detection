@@ -6,62 +6,37 @@
     <title>Pneumonia Detection</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-
-body {
-            background-image: url('../static/images/background.jpg'); /* Replace 'background.jpg' with your image file path */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the background */
-            background-repeat: no-repeat; /* Do not repeat the background */
-        }
-        .container {
-            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
-            padding: 20px; /* Add some padding to the container */
-            border-radius: 10px; /* Add rounded corners to the container */
-            margin-top: 50px; /* Add some space from the top */
-        }
-        .image-container {
-            border: 1px solid #dee2e6;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .custom-file-upload {
-            border: 4px dashed #aaa;
-            padding: 40px;
-            transition: border 0.3s ease;
-            text-align: center;
-            margin: auto;
-            cursor: pointer;
-            border-radius: 10px;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
-        .custom-file-upload:hover {
-            border-color: #333;
-        }
-        .custom-file-upload .upload-icon {
-            margin-bottom: 10px;
-        }
-        .upload-info {
-            font-size: 14px;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/segmentation.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">LUNG-SAFE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('home')}}">HOME</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('seg')}}">SEGMENTATION</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('cal')}}">CLASSIFICATION</a>
+            </li>
+            <!-- Add other navigation links here -->
+        </ul>
+    </div>
+</nav>
 <div class="container">
     <h1 class="text-center mb-4">Pneumonia Detection</h1>
     <form action="/predict" method="post" enctype="multipart/form-data" class="mb-3">
         <div class="custom-file-upload">
             <div class="upload-icon">
                 <!-- Icon image source -->
-                <img src="upload-cloud-icon.png" alt="Upload" style="width: 64px; height: 64px;" />
+                <img src="../static/images/upload.jpg" alt="Upload" style="width: 64px; height: 64px;" />
             </div>
             <div class="upload-info">
                 Drag files to upload or use the button below
@@ -78,8 +53,10 @@ body {
         <div class="col-md-6">
             <h3 class="text-center">Uploaded Image</h3>
             <div class="image-container">
+                  {% if img_data %}
                 <!-- Uploaded image will be displayed here -->
                 <img src="data:image/png;base64,{{ img_data }}" alt="Uploaded Image">
+                {% endif %}
             </div>
         </div>
         <div class="col-md-6">
@@ -88,6 +65,7 @@ body {
                 <!-- Predicted image will be displayed here -->
                 {% if img_str %}
                     <img src="data:image/png;base64,{{ img_str }}" alt="Predicted Image">
+                    <a href="data:image/png;base64,{{ img_str }}" download="predicted_image.png" class="btn btn-primary">Download Image</a>
                 {% endif %}
             </div>
         </div>

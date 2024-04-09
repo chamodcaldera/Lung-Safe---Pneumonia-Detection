@@ -70,17 +70,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
     "Flask server.lung-safe.executor": "Run",
-    "JavaScript Debug.base.html.executor": "Run",
-    "JavaScript Debug.classify.html.executor": "Run",
-    "JavaScript Debug.home.html.executor": "Run",
-    "JavaScript Debug.segmentation.html.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Classification-Function",
-    "last_opened_file_path": "C:/Users/94703/PycharmProjects/lung-safe/static/images",
-    "list.type.of.created.stylesheet": "CSS",
+    "git-widget-placeholder": "segmention-fuction",
+    "last_opened_file_path": "C:/Users/94703/PycharmProjects/lung-safe/Models/Classification",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,7 +83,7 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\94703\PycharmProjects\lung-safe\static\images" />

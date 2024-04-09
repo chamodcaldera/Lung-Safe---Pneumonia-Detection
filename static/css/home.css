@@ -8,9 +8,16 @@
     height: 100%;
 }
         /* Adjust the padding and styles as needed */
-.navbar {
-    background: purple;
-}
-.navbar-brand, .nav-link {
-    color: white !important;
-}
+                .navbar {
+            background-color: #007bff; /* Bootstrap primary color */
+            padding: 0.7rem 1rem;
+        }
+        .navbar-brand {
+            color: #fff !important;
+        }
+        .navbar a {
+            color: #ddd !important;
+        }
+        .navbar a:hover {
+            color: #fff !important;
+        }
