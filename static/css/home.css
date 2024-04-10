@@ -21,3 +21,14 @@
         .navbar a:hover {
             color: #fff !important;
         }
+.lead {
+
+    color: black;
+    font-weight: bold;
+      border-style: solid;
+  border-color: white;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #aaaaaa;
+
+}

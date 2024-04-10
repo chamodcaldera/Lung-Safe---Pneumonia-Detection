@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 my_path = os.path.abspath(os.path.dirname(__file__))
 
-inception_model_path = r"Models\Classification\resnet_pneumonia_detection.h5"
+inception_model_path = r"Models\Classification\InsceptionV3_pneumonia_detection.h5"
 vgg16_model_path = r"Models/Classification/new_vgg16_pneumonia_detection (1).h5"
 resnet_model_path = r"Models/Classification/Resnet50_pneumonia_detection.h5"
 

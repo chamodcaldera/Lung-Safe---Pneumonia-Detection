@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e2961af-d04f-446c-b86f-4d00a0c3090e" name="Changes" comment="added model implementation files">
+    <list default="true" id="3e2961af-d04f-446c-b86f-4d00a0c3090e" name="Changes" comment="Web performance optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/Classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/Classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Classification/resnet_pneumonia_detection.h5" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Classification/InsceptionV3_pneumonia_detection.h5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,7 @@
       <recent name="C:\Users\94703\PycharmProjects\lung-safe\templates\static\static\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.lung-safe">
+  <component name="RunManager" selected="JavaScript Debug.home.html">
     <configuration name="base.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/lung-safe/templates/base.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -144,7 +146,7 @@
       <updated>1711637442020</updated>
       <workItem from="1711637445744" duration="4059000" />
       <workItem from="1711830263217" duration="29984000" />
-      <workItem from="1712736255955" duration="2950000" />
+      <workItem from="1712736255955" duration="4519000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -186,7 +188,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712715581383</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Web performance optimized">
+      <option name="closed" value="true" />
+      <created>1712741594501</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712741594501</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Web performance optimized">
+      <option name="closed" value="true" />
+      <created>1712741693238</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712741693238</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,9 +227,10 @@
     <MESSAGE value="classify model" />
     <MESSAGE value="refine the user interface" />
     <MESSAGE value="added model implementation files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added model implementation files" />
+    <MESSAGE value="Web performance optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Web performance optimized" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lung_safe$lung_safe.coverage" NAME="lung-safe Coverage Results" MODIFIED="1712741253792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lung_safe$lung_safe.coverage" NAME="lung-safe Coverage Results" MODIFIED="1712742159515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
