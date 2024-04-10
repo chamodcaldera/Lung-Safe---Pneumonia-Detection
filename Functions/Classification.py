@@ -7,20 +7,20 @@ import pandas as pd
 import numpy as np
 import os
 
+
 my_path = os.path.abspath(os.path.dirname(__file__))
 
-inception_model_path = os.path.join(my_path, "../Models/Classification/resnet_pneumonia_detection.h5")
-vgg16_model_path = os.path.join(my_path, "../Models/Classification/new_vgg16_pneumonia_detection (1).h5")
-resnet_model_path = os.path.join(my_path, "../Models/Classification/Resnet50_pneumonia_detection.h5")
+# inception_model_path = os.path.join(my_path, "../Models/Classification/resnet_pneumonia_detection.h5")
+# vgg16_model_path = os.path.join(my_path, "../Models/Classification/new_vgg16_pneumonia_detection (1).h5")
+# resnet_model_path = os.path.join(my_path, "../Models/Classification/Resnet50_pneumonia_detection.h5")
+#
+# inception_model = load_model(inception_model_path)
+# vgg16_model = load_model(vgg16_model_path)
+# resnet_model = load_model(resnet_model_path)
 
 
-def predict_pneumonia(image):
-
+def predict_pneumonia(image,inception_model,vgg16_model,resnet_model):
     image = [image]
-
-    inception_model = load_model(inception_model_path)
-    vgg16_model = load_model(vgg16_model_path)
-    resnet_model = load_model(resnet_model_path)
 
     # List of models for ensemble
     models = [inception_model, vgg16_model, resnet_model]

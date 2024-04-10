@@ -6,8 +6,19 @@ from flask import Flask, request, jsonify, render_template
 from Functions.Segmentation import seg_predict
 from Functions.Classification import predict_pneumonia, predict_single_pneumonia
 from PIL import Image
+from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
+
+my_path = os.path.abspath(os.path.dirname(__file__))
+
+inception_model_path = r"Models\Classification\resnet_pneumonia_detection.h5"
+vgg16_model_path = r"Models/Classification/new_vgg16_pneumonia_detection (1).h5"
+resnet_model_path = r"Models/Classification/Resnet50_pneumonia_detection.h5"
+
+inception_model = load_model(inception_model_path)
+vgg16_model = load_model(vgg16_model_path)
+resnet_model = load_model(resnet_model_path)
 
 
 def save_base64_image_to_temp(base64_str):
@@ -72,7 +83,7 @@ def detect_pneumonia():
     temp_image_path = save_base64_image_to_temp(img_str)
     img_str = img_str.decode('utf-8')
 
-    category = predict_pneumonia(temp_image_path)
+    category = predict_pneumonia(temp_image_path, inception_model, vgg16_model, resnet_model)
     img_byte_arr = io.BytesIO()
     image.save(img_byte_arr, format='PNG')
     encoded_img = base64.b64encode(img_byte_arr.getvalue()).decode('ascii')
