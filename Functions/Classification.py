@@ -1,40 +1,25 @@
-import logging
-import scipy
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import load_model
 import pandas as pd
 import numpy as np
-import os
-
-
-my_path = os.path.abspath(os.path.dirname(__file__))
-
-# inception_model_path = os.path.join(my_path, "../Models/Classification/resnet_pneumonia_detection.h5")
-# vgg16_model_path = os.path.join(my_path, "../Models/Classification/new_vgg16_pneumonia_detection (1).h5")
-# resnet_model_path = os.path.join(my_path, "../Models/Classification/Resnet50_pneumonia_detection.h5")
-#
-# inception_model = load_model(inception_model_path)
-# vgg16_model = load_model(vgg16_model_path)
-# resnet_model = load_model(resnet_model_path)
 
 
 def predict_pneumonia(image,inception_model,vgg16_model,resnet_model):
     image = [image]
 
-    # List of models for ensemble
+
     models = [inception_model, vgg16_model, resnet_model]
 
     # Weights for ensemble based on model performance
     weights = [0.2, 0.3, 0.5]
 
-    # Ensure that the sum of weights is 1
+
     weights = np.array(weights) / np.sum(weights)
 
-    # DataFrame to hold the input image for prediction
+
     df_file = pd.DataFrame({'filename': image})
 
-    # Data generator for the input image
+
     pred_generator = ImageDataGenerator(rescale=1. / 255).flow_from_dataframe(
         df_file,
         x_col='filename',
@@ -45,19 +30,19 @@ def predict_pneumonia(image,inception_model,vgg16_model,resnet_model):
         shuffle=False
     )
 
-    # Get predictions from each model
+
     preds = np.array([model.predict(pred_generator) for model in models])
 
-    # Calculate the weighted average of predictions
+
     weighted_preds = np.tensordot(preds, weights, axes=((0), (0)))
 
     binary_predictions = [1 if x > 0.6 else 0 for x in weighted_preds][0]
 
-    # Map the prediction to the corresponding label
+
     label_map = {0: 'Normal', 1: 'Pneumonia'}
     final_prediction = label_map[binary_predictions]
 
-    # Clean up models from memory
+
     del inception_model, vgg16_model, resnet_model
 
     return final_prediction
