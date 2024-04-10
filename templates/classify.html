@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pneumonia Detection</title>
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/classify.css">
 
@@ -59,7 +59,7 @@
                 <h3 class="text-center">Uploaded Image</h3>
                 <div class="image-container">
                     {% if img_data %}
-                    <!-- Uploaded image will be displayed here -->
+
                     <img src="data:image/png;base64,{{ img_data }}" alt="Uploaded Image">
                     {% endif %}
                 </div>
@@ -67,7 +67,7 @@
             <div class="col-md-6">
                 <h3 class="text-center">Predicted Image</h3>
                 <div class="image-container" id="predictedImage">
-                    <!-- Predicted image will be displayed here -->
+
                     {% if img_str %}
                         <img src="data:image/png;base64,{{ img_str }}" alt="Predicted Image">
                         <a href="data:image/png;base64,{{ img_str }}" id="downloadButton" class="btn btn-primary mt-3" download="predicted_image.png">Download Image</a>
@@ -89,7 +89,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    // Bootstrap file input label update
+
     $('.custom-file-input').on('change', function() {
         var fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);

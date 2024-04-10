@@ -1,119 +1,136 @@
 body {
-            background-image: url("../images/background.jpg"); /* Background image path */
-            background-size: cover;
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 95%;
-            max-width: 1600px;
-            margin: auto;
-        }
-        .card {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 10px;
-            width: 48%;
-            padding: 20px;
-            margin: 10px;
-        }
-        .image-container {
-            border: 1px solid #dee2e6;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .custom-file-upload {
-            border: 4px dashed #aaa;
-            padding: 40px;
-            transition: border 0.3s ease;
-            text-align: center;
-            margin: auto;
-            cursor: pointer;
-            border-radius: 10px;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
-        .custom-file-upload:hover {
-            border-color: #333;
-        }
-        .custom-file-upload .upload-icon {
-            margin-bottom: 10px;
-        }
-        .upload-info {
-            font-size: 14px;
-            color: #333;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-}.loader {
-  width: 175px;
-  height: 80px;
-  display: block;
-  margin:auto;
-  background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
-  background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
-  background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
-  background-repeat: no-repeat;
-  position: relative;
-  box-sizing: border-box;
-     display: none;
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 95%;
+    max-width: 1600px;
+    margin: auto;
 }
+
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 10px;
+    width: 48%;
+    padding: 20px;
+    margin: 10px;
+}
+
+.image-container {
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.custom-file-upload {
+    border: 4px dashed #aaa;
+    padding: 40px;
+    transition: border 0.3s ease;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.custom-file-upload:hover {
+    border-color: #333;
+}
+
+.custom-file-upload .upload-icon {
+    margin-bottom: 10px;
+}
+
+.upload-info {
+    font-size: 14px;
+    color: #333;
+
+}
+
+.loader {
+    width: 175px;
+    height: 80px;
+    display: block;
+    margin: auto;
+    background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
+    background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
+    background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
+    background-repeat: no-repeat;
+    position: relative;
+    box-sizing: border-box;
+    display: none;
+}
+
 .loader::before {
-  content: '';
-  left: 60px;
-  bottom: 18px;
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #FF3D00;
-  background-image: radial-gradient(circle 8px at 18px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 0px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 0px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 36px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 36px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 5px, #FFF 100%, transparent 0);
-  background-repeat: no-repeat;
-  box-sizing: border-box;
-  animation: rotationBack 3s linear infinite;
+    content: '';
+    left: 60px;
+    bottom: 18px;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #FF3D00;
+    background-image: radial-gradient(circle 8px at 18px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 0px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 0px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 36px 18px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 18px 36px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 5px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 30px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 30px, #FFF 100%, transparent 0), radial-gradient(circle 4px at 5px 5px, #FFF 100%, transparent 0);
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    animation: rotationBack 3s linear infinite;
 }
+
 .loader::after {
-  content: '';
-  left: 94px;
-  bottom: 15px;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #FF3D00;
-  background-image: radial-gradient(circle 5px at 12px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 0px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 0px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 24px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 24px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 3px, #FFF 100%, transparent 0);
-  background-repeat: no-repeat;
-  box-sizing: border-box;
-  animation: rotationBack 4s linear infinite reverse;
-}                .navbar {
-            background-color: #007bff; /* Bootstrap primary color */
-            padding: 0.7rem 1rem;
-        }
-        .navbar-brand {
-            color: #fff !important;
-        }
-        .navbar a {
-            color: #ddd !important;
-        }
-        .navbar a:hover {
-            color: #fff !important;
-        }
+    content: '';
+    left: 94px;
+    bottom: 15px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #FF3D00;
+    background-image: radial-gradient(circle 5px at 12px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 0px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 0px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 24px 12px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 12px 24px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 3px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 20px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 20px, #FFF 100%, transparent 0), radial-gradient(circle 2.5px at 3px 3px, #FFF 100%, transparent 0);
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    animation: rotationBack 4s linear infinite reverse;
+}
+
+.navbar {
+    background-color: #007bff;
+    padding: 0.7rem 1rem;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.navbar a {
+    color: #ddd !important;
+}
+
+.navbar a:hover {
+    color: #fff !important;
+}
 
 @keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
 }

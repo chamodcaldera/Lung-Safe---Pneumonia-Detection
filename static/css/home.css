@@ -3,30 +3,35 @@
     background-size: cover;
     height: 100vh;
 }
+
 .overlay {
     background-color: rgba(255, 255, 255, 0.4);
     height: 100%;
 }
-        /* Adjust the padding and styles as needed */
-                .navbar {
-            background-color: #007bff; /* Bootstrap primary color */
-            padding: 0.7rem 1rem;
-        }
-        .navbar-brand {
-            color: #fff !important;
-        }
-        .navbar a {
-            color: #ddd !important;
-        }
-        .navbar a:hover {
-            color: #fff !important;
-        }
+
+.navbar {
+    background-color: #007bff;
+    padding: 0.7rem 1rem;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.navbar a {
+    color: #ddd !important;
+}
+
+.navbar a:hover {
+    color: #fff !important;
+}
+
 .lead {
 
     color: black;
     font-weight: bold;
-      border-style: solid;
-  border-color: white;
+    border-style: solid;
+    border-color: white;
     padding: 10px;
     border-radius: 25px;
     background-color: #aaaaaa;
